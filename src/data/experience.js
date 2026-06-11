@@ -1,0 +1,36 @@
+export const experienceData = [
+  {
+    id: 1,
+    company: 'Digicoders Technologies',
+    role: 'MERN Stack Developer',
+    duration: 'Jan-2026 - Present ',
+    year: '2026',
+    location: 'Lucknow, Uttar Pradesh',
+    type: 'Developer',
+    description: [
+      'Developed a REST API using Node.js with Express to enable seamless frontend-backend communication.',
+      'Built a full-stack web application using React, Node.js, Express, and MongoDB.',
+      'Explored and implemented interactive UI/UX patterns for modern web apps.',
+      'Improved understanding of component-based architecture with React.',
+    ],
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST API'],
+    color: '#D4AF37',
+  },
+  {
+    id: 2,
+    company: 'Softpro India',
+    role: 'MERN Stack Development Intern',
+    duration: '45 Days',
+    year: '2024',
+    location: 'Lucknow, Uttar Pradesh',
+    type: 'Internship',
+    description: [
+      'Developed a REST API using Node.js with Express to enable seamless frontend-backend communication.',
+      'Built a full-stack web application using React, Node.js, Express, and MongoDB.',
+      'Explored and implemented interactive UI/UX patterns for modern web apps.',
+      'Improved understanding of component-based architecture with React.',
+    ],
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST API'],
+    color: '#D4AF37',
+  },
+]

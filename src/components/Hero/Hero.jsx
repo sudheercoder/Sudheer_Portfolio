@@ -14,12 +14,11 @@ const typingTexts = [
 ];
 
 const floatingTech = [
-  { label: "Node", angle: 50, radius: 230, icon: <FaNode /> },
-  { label: "JS", angle: 140, radius: 230, icon: <FaJs /> },
-  { label: "Mongo", angle: 200  , radius: 230, icon:<SiMongodb /> },
-  { label: "Express", angle: 270, radius: 230, icon: <SiExpress /> },
-  {  angle: 340, radius: 230, icon: <FaReact /> },
-  
+  { label: "Node",    angle: 50,  icon: <FaNode /> },
+  { label: "JS",      angle: 140, icon: <FaJs /> },
+  { label: "Mongo",   angle: 200, icon: <SiMongodb /> },
+  { label: "Express", angle: 270, icon: <SiExpress /> },
+  { label: "React",   angle: 340, icon: <FaReact /> },
 ];
 
 const TypingText = () => {
@@ -59,9 +58,64 @@ const TypingText = () => {
   );
 };
 
+/* ─────────────────────────────────────────────
+   Responsive orbit: reads a CSS custom property
+   --orb-size set on the wrapper div so badges
+   always stay on the circle edge regardless of
+   how large the image is.
+───────────────────────────────────────────── */
+const FloatingBadge = ({ tech, index, orbRadius }) => {
+  const rad = (tech.angle * Math.PI) / 180;
+  const x = Math.cos(rad) * orbRadius;
+  const y = Math.sin(rad) * orbRadius;
+
+  return (
+    <motion.div
+      key={tech.label}
+      className="absolute glass rounded-full p-2 flex items-center justify-center text-yellow-500 text-xl sm:text-2xl font-mono"
+      style={{
+        left: `calc(50% + ${x}px - 20px)`,
+        top:  `calc(50% + ${y}px - 20px)`,
+        width: "40px",
+        height: "40px",
+        zIndex: 10,
+        pointerEvents: "none",
+      }}
+      animate={{ y: [0, -10, 0], opacity: [0.7, 1, 0.7] }}
+      transition={{
+        duration: 3 + index * 0.5,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: index * 0.4,
+      }}
+    >
+      <span>{tech.icon}</span>
+    </motion.div>
+  );
+};
+
 const Hero = () => {
-  const scrollToAbout = () =>
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+  /* Measure viewport width to pick the right orb size */
+  const [orbSize, setOrbSize] = useState(340);
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 400)       setOrbSize(200);
+      else if (w < 640)  setOrbSize(240);
+      else if (w < 1024) setOrbSize(280);
+      else               setOrbSize(340);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  /* orbit radius = half the orb image size + a fixed gap */
+  const orbRadius = orbSize / 2 + 55;
+  /* container must be large enough to hold image + badges on all sides */
+  const containerSize = orbSize + (orbRadius - orbSize / 2) * 2 + 20;
+
   const scrollToContact = () =>
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
@@ -83,12 +137,7 @@ const Hero = () => {
         />
         <motion.div
           animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.2, 0.1] }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="absolute bottom-0 right-0 w-[800px] h-[800px] rounded-full"
           style={{
             background:
@@ -113,25 +162,17 @@ const Hero = () => {
               left: `${10 + i * 15}%`,
               top: `${20 + (i % 3) * 20}%`,
             }}
-            animate={{
-              y: [0, -20 - i * 5, 0],
-              opacity: [0.3, 0.6, 0.3],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 6 + i * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.5,
-            }}
+            animate={{ y: [0, -20 - i * 5, 0], opacity: [0.3, 0.6, 0.3], rotate: [0, 180, 360] }}
+            transition={{ duration: 6 + i * 2, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-20 pb-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-120px)]">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full pt-20 pb-12">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100vh-120px)]">
+
           {/* ── Left ── */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -157,7 +198,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight"
+              className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4 leading-tight"
             >
               Sudheer <span className="gold-text">Pal</span>
             </motion.h1>
@@ -166,7 +207,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-xl sm:text-2xl font-sans font-light text-white/80 mb-6 h-9"
+              className="text-lg sm:text-xl lg:text-2xl font-sans font-light text-white/80 mb-6 h-9"
             >
               <TypingText />
             </motion.div>
@@ -175,7 +216,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-white/50 text-base leading-relaxed max-w-lg mb-10"
+              className="text-white/50 text-sm sm:text-base leading-relaxed max-w-lg mb-10 mx-auto lg:mx-0"
             >
               Passionate Full Stack Developer specializing in MERN Stack
               Development. I build modern, scalable, responsive, and
@@ -186,7 +227,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
-              className="flex flex-wrap gap-4 mb-12"
+              className="flex flex-wrap gap-4 mb-12 justify-center lg:justify-start"
             >
               <motion.a
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -211,17 +252,16 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* ── Right: Profile ── */}
+          {/* ── Right: Profile orb ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="order-1 lg:order-2 flex justify-center items-center"
           >
-            
             <div
               className="relative flex items-center justify-center"
-              style={{ width: "520px", height: "520px" }}
+              style={{ width: `${containerSize}px`, height: `${containerSize}px` }}
             >
               {/* Orbit rings */}
               {[0, 1, 2].map((i) => (
@@ -229,27 +269,22 @@ const Hero = () => {
                   key={i}
                   className="absolute rounded-full border border-gold/10"
                   style={{
-                    width: `${384 + (i + 1) * 40}px`,
-                    height: `${384 + (i + 1) * 40}px`,
+                    width: `${orbSize + 20 + (i + 1) * 28}px`,
+                    height: `${orbSize + 20 + (i + 1) * 28}px`,
                     animation: `spin ${20 + i * 10}s linear infinite ${i % 2 === 0 ? "" : "reverse"}`,
                     zIndex: 0,
                   }}
                 />
               ))}
 
-              {/* ✅ Profile photo — original size w-96 h-96, z-index 1 */}
+              {/* Profile photo */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="rounded-full overflow-hidden"
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="rounded-full overflow-hidden flex-shrink-0"
                 style={{
-                  width: "384px" /* lg:w-96 = 384px */,
-                  height: "384px" /* lg:h-96 = 384px */,
-                  flexShrink: 0,
+                  width: `${orbSize}px`,
+                  height: `${orbSize}px`,
                   position: "relative",
                   zIndex: 1,
                   border: "2px solid rgba(212,175,55,0.5)",
@@ -278,43 +313,21 @@ const Hero = () => {
                 transition={{ duration: 3, repeat: Infinity }}
                 className="absolute rounded-full pointer-events-none"
                 style={{
-                  width: "384px",
-                  height: "384px",
+                  width: `${orbSize}px`,
+                  height: `${orbSize}px`,
                   background:
                     "radial-gradient(circle at center, rgba(212,175,55,0.18) 0%, transparent 70%)",
                   zIndex: 2,
                 }}
               />
 
-              {/* ✅ Floating tech badges — z-index 10, image ke center se orbit */}
-              {floatingTech.map((tech, i) => {
-                const rad = (tech.angle * Math.PI) / 180;
-                const x = Math.cos(rad) * tech.radius;
-                const y = Math.sin(rad) * tech.radius;
-                return (
-                  <motion.div
-                    key={tech.label}
-                    className="absolute glass rounded-full p-2 flex items-center justify-center text-yellow-500  text-2xl font-mono"
-                    style={{
-                      left: `calc(50% + ${x}px - 30px)`,
-                      top: `calc(50% + ${y}px - 16px)`,
-                      zIndex: 10,
-                      pointerEvents: "none",
-                    }}
-                    animate={{ y: [0, -10, 0], opacity: [0.7, 1, 0.7] }}
-                    transition={{
-                      duration: 3 + i * 0.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: i * 0.4,
-                    }}
-                  >
-                    <span>{tech.icon}</span>
-                  </motion.div>
-                );
-              })}
+              {/* Floating tech badges */}
+              {floatingTech.map((tech, i) => (
+                <FloatingBadge key={tech.label} tech={tech} index={i} orbRadius={orbRadius} />
+              ))}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

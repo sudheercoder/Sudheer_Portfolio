@@ -3,15 +3,15 @@ import { fadeUp, fadeLeft, fadeRight, staggerContainer, staggerItem, viewportCon
 import { Code2, Layers, Zap, Award } from 'lucide-react'
 
 const stats = [
-  { label: 'Years Experience', value: '2+', icon: Award },
-  { label: 'Projects Built', value: '10+', icon: Layers },
-  { label: 'Technologies', value: '15+', icon: Code2 },
-  { label: 'Certifications', value: '3', icon: Zap },
+  { label: 'Years Experience', value: '0-1', icon: Award },
+  { label: 'Projects Built', value: '8+', icon: Layers },
+  { label: 'Technologies/Tools', value: '13+', icon: Code2 },
+  { label: 'Certifications', value: '4+', icon: Zap },
 ]
 
 const About = () => {
   return (
-    <section id="about" className="relative py-28 bg-dark overflow-hidden">
+    <section id="about" className="relative py-10 bg-dark overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"

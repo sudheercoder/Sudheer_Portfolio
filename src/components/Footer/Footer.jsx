@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import { Heart, Phone, MapPin, Mail, ArrowUpRight } from 'lucide-react'
-const logo = "/images/Sudheer-Pal-logo.png";
+const logo = "/images/Sudheer-Pal-Logo.png";
 
 const navLinks = [
   { label: 'Home',       href: '#home' },

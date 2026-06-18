@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import { Heart, Phone, MapPin, Mail, ArrowUpRight } from 'lucide-react'
-import logoImg from '/images/Sudheer-Pal-Logo.png'
+import logo from '/images/Sudheer-Pal-logo.png'
 
 const navLinks = [
   { label: 'Home',       href: '#home' },
@@ -56,7 +56,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <motion.div whileHover={{ scale: 1.02 }} className="mb-5">
-              <img src={logoImg} alt="Sudheer Pal" className="h-12 object-contain"/>
+              <img src={logo} alt="Sudheer Pal" className="h-14 object-contain"/>
             </motion.div>
             <p className="text-white/40 text-sm leading-relaxed mb-5">
               Building modern, scalable, and beautiful web experiences with the MERN stack.
@@ -155,10 +155,10 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-xs font-mono">
-            © 2026 <span className="text-gold/60">Sudheer Pal</span>. All Rights Reserved.
+            © 2026 <span className="text-gold/60">copyright</span>. All Rights Reserved.
           </p>
           <p className="text-white/25 text-xs flex items-center gap-1.5">
-            Crafted with <Heart size={11} className="text-gold fill-gold" /> using React, Tailwind & Framer Motion
+          Designed by Sudheer Pal <Heart size={15} className="text-gold fill-gold" /> 
           </p>
         </div>
       </div>

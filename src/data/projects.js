@@ -74,7 +74,7 @@ export const projectsData = [
     tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     live: 'https://cqmbysudheer.vercel.app/working',
     github: 'https://github.com/sudheercoder',
-    color: '#D4AF37',
+    color: '#4DB33D',
     category: 'Full Stack',
     featured: true,
   },

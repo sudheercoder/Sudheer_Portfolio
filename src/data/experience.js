@@ -19,7 +19,7 @@ export const experienceData = [
   {
     id: 2,
     company: 'Softpro India',
-    role: 'MERN Stack Development Intern',
+    role: 'MERN Stack Training',
     duration: '45 Days',
     year: '2024',
     location: 'Lucknow, Uttar Pradesh',

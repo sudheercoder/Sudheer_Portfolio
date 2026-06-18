@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import logoImg from '/images/Sudheer-Pal-Logo.png'
+import logo from '/images/Sudheer-Pal-logo.png'
 
 const navLinks = [
   { label: 'Home',       href: '#home' },
@@ -48,9 +48,9 @@ const Navbar = () => {
           {/* Logo */}
           <motion.button onClick={() => handleNavClick('#home')} whileHover={{ scale: 1.03 }} className="flex items-center gap-2">
             <img
-              src={logoImg}
+              src={logo}
               alt="Sudheer Pal Logo"
-              className="h-10 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
           </motion.button>
 
@@ -99,7 +99,7 @@ const Navbar = () => {
             transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             className="fixed inset-0 z-40 glass-dark flex flex-col items-center justify-center gap-8"
           >
-            <img src={logoImg} alt="Logo" className="h-14 mb-4 object-contain"
+            <img src={logo} alt="Logo" className="h-16 mb-4 object-contain"
               style={{ filter: 'drop-shadow(0 0 12px rgba(212,175,55,0.6)) brightness(1.1)' }}
             />
             {navLinks.map((link, i) => (

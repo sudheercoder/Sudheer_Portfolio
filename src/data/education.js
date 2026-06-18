@@ -37,16 +37,6 @@ export const educationData = [
 export const certificatesData = [
   {
     id: 1,
-    title: 'MERN Stack Development Intern',
-    issuer: 'Digicoders Technologies Pvt. Ltd.',
-    year: '2026',
-    type: 'Internship Certificate',
-    description: 'Completed MERN Stack technology internship with hands-on project development.',
-    icon: '⚛️',
-    color: '#D4AF37',
-  },
-  {
-    id: 2,
     title: 'MERN Stack Development',
     issuer: 'Softpro India Pvt. Ltd.',
     year: '2024',
@@ -56,7 +46,7 @@ export const certificatesData = [
     color: '#D4AF37',
   },
   {
-    id: 3,
+    id: 2,
     title: 'AI & Python Technical Workshop',
     issuer: 'E-Gain Technologies',
     year: '2023',
@@ -66,7 +56,7 @@ export const certificatesData = [
     color: '#61DAFB',
   },
   {
-    id: 4,
+    id: 3,
     title: 'HTML, CSS & MySQL',
     issuer: 'Binplus Technologies Pvt. Ltd., Jhansi',
     year: '2021',

@@ -3,7 +3,7 @@ export const experienceData = [
     id: 1,
     company: 'Digicoders Technologies',
     role: 'MERN Stack Developer',
-    duration: 'Jan-2026 - Present ',
+    duration: 'July-2025 - Present ',
     year: '2026',
     location: 'Lucknow, Uttar Pradesh',
     type: 'Developer',

@@ -23,7 +23,7 @@ const BackToTop = () => {
           whileHover={{ scale: 1.1, y: -3 }}
           whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center"
+          className="fixed bottom-20 left-5 z-50 w-12 h-12 rounded-full flex items-center justify-center"
           style={{
             background: 'linear-gradient(135deg, #D4AF37, #B8941F)',
             boxShadow: '0 0 25px rgba(212,175,55,0.5)',

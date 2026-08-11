@@ -25,7 +25,7 @@ const Home = () => {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
-        className="fixed left-6 bottom-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-green-600 shadow-[0_10px_30px_rgba(37,211,102,0.35)] transition-transform duration-300 hover:-translate-y-1"
+        className="fixed left-5 bottom-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-green-600 shadow-[0_10px_30px_rgba(37,211,102,0.35)] transition-transform duration-300 hover:-translate-y-1"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

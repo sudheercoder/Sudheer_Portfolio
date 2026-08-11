@@ -36,7 +36,7 @@ const Experience = () => {
         {/* Cards Grid */}
         <motion.div
           variants={staggerContainer} initial="hidden" whileInView="visible" viewport={viewportConfig}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-3 gap-8"
         >
           {experienceData.map((exp, index) => (
             <motion.div

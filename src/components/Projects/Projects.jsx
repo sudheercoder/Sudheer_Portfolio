@@ -1,4 +1,9 @@
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Swiper from "swiper";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 import {
   fadeUp,
   staggerContainer,
@@ -161,6 +166,45 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const Projects = () => {
+  const mobileSwiperRef = useRef(null);
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 639px)");
+    let swiper;
+
+    const syncSwiper = () => {
+      if (mobileQuery.matches && !swiper && mobileSwiperRef.current) {
+        swiper = new Swiper(mobileSwiperRef.current, {
+          modules: [Autoplay, Pagination],
+          slidesPerView: 1,
+          slidesPerGroup: 1,
+          spaceBetween: 20,
+          loop: true,
+          speed: 600,
+          autoplay: {
+            delay: 1800,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: mobileSwiperRef.current.querySelector(".projects-pagination"),
+            clickable: true,
+          },
+        });
+      } else if (!mobileQuery.matches && swiper) {
+        swiper.destroy(true, true);
+        swiper = undefined;
+      }
+    };
+
+    syncSwiper();
+    mobileQuery.addEventListener("change", syncSwiper);
+
+    return () => {
+      mobileQuery.removeEventListener("change", syncSwiper);
+      swiper?.destroy(true, true);
+    };
+  }, []);
+
   return (
     <section
       id="projects"
@@ -213,13 +257,33 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Card Grid */}
+        {/* Mobile carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportConfig}
+          transition={{ duration: 0.6 }}
+          className="sm:hidden"
+        >
+          <div ref={mobileSwiperRef} className="swiper projects-swiper">
+            <div className="swiper-wrapper">
+              {projectsData.map((project, i) => (
+                <div key={project.id} className="swiper-slide h-auto">
+                  <ProjectCard project={project} index={i} />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="projects-pagination mt-6 flex justify-center gap-2" />
+        </motion.div>
+
+        {/* Desktop and tablet grid */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={viewportConfig}
-          className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6"
+          viewport={{ ...viewportConfig, amount: 0.05 }}
+          className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6"
         >
           {projectsData.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />

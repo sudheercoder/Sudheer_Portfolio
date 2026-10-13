@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedinIn, FaInstagram, FaReact, FaNode, FaJs } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { ArrowDown, Download } from "lucide-react";
-import profileImg from "/images/Sudheer-Profile-Pic.png";
+import profileImg from "../../../public/images/sudheerportfoliopic.png";
 import { SiExpress, SiMongodb } from "react-icons/si";
 
 const typingTexts = [
@@ -294,8 +294,9 @@ const Hero = () => {
               >
                 <img
                   src={profileImg}
-                  alt="Sudheer Pal"
-                  className="w-full h-full object-cover object-top"
+                  alt="Sudheer Pal Mern Stack Developer"
+                  title="Sudheer Pal Mern Stack Developer"
+                  className="w-full h-full object-cover  object-top"
                   style={{ filter: "brightness(0.92) contrast(1.05)" }}
                 />
                 <div

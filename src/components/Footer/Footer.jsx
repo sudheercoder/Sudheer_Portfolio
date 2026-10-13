@@ -10,7 +10,6 @@ const navLinks = [
   { label: 'Experience', href: '#experience' },
   { label: 'Skills',     href: '#skills' },
   { label: 'Projects',   href: '#projects' },
-  { label: 'Education',  href: '#education' },
   { label: 'Contact',    href: '#contact' },
 ]
 
@@ -18,7 +17,7 @@ const socials = [
   { icon: FaGithub,      href: 'https://github.com/sudheercoder',     label: 'GitHub' },
   { icon: FaLinkedinIn,  href: 'https://www.linkedin.com/in/sudheerpal001/', label: 'LinkedIn' },
   { icon: HiOutlineMail, href: 'mailto:spal57304@gmail.com',            label: 'Email' },
-  { icon: FaInstagram,   href: 'https://www.instagram.com/sudheerpal01?igsh=MWN1NTFzNHgxdWtmdA==',                 label: 'Instagram' },
+  { icon: FaInstagram,   href: 'https://instagram.com/the_sudheerpal?dlrf=MWN1NTFzNHgxdWtmdA%3D%3D',                 label: 'Instagram' },
 ]
 
 const contactDetails = [

@@ -7,6 +7,34 @@ import {
   viewportConfig
 } from '../../utils/animations'
 import { skillsData } from '../../data/skills'
+import {
+  Boxes,
+  Cloud,
+  Globe,
+  Layers,
+  LockKeyhole,
+  Network,
+  Package,
+  ShieldCheck,
+  Terminal,
+  Workflow
+} from 'lucide-react'
+
+
+const toolkit = [
+  { name: 'Hostinger', icon: Globe },
+  { name: 'VPS Hosting', icon: Server },
+  { name: 'Docker', icon: Package },
+  { name: 'Docker Compose', icon: Boxes },
+  { name: 'Vercel', icon: Layers },
+  { name: 'Render', icon: Cloud },
+  { name: 'Nginx', icon: Server },
+  { name: 'Linux', icon: Terminal },
+  { name: 'SSH', icon: Network },
+  { name: 'Domain & DNS', icon: Workflow },
+  { name: 'SSL / HTTPS', icon: LockKeyhole },
+  { name: 'CI/CD', icon: ShieldCheck }
+]
 
 const SkillBar = ({ name, level, icon, delay = 0 }) => {
   const Icon = icon
@@ -234,6 +262,34 @@ const Skills = () => {
             </div>
           </div>
         </motion.div>
+
+
+         <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportConfig}
+                className="mt-8 rounded-2xl border border-gold/10 bg-[#111111] p-6"
+              >
+                <div className="mb-5 flex items-center gap-3">
+                  <Layers className="h-5 w-5 text-gold" aria-hidden="true" />
+                  <h3 className="font-display text-lg font-bold text-white">
+                    Deployment Toolkit
+                  </h3>
+                </div>
+        
+                <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+                  {toolkit.map(({ name, icon: Icon }) => (
+                    <li
+                      key={name}
+                      className="flex min-h-12 items-center gap-2 rounded-lg border border-gold/10 bg-white/[0.02] px-3 py-2 text-xs font-medium text-white/70 transition-colors duration-300 hover:border-gold/35 hover:text-white"
+                    >
+                      <Icon className="h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
+                      <span>{name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
       </div>
     </section>
   )

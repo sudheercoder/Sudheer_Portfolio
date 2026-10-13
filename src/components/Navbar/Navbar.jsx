@@ -4,7 +4,6 @@ import { Menu, X } from 'lucide-react'
 const logo = "/images/Sudheer-Pal-Logo.png";
 
 const navLinks = [
-  { label: 'Home',       href: '#home' },
   { label: 'About',      href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills',     href: '#skills' },
